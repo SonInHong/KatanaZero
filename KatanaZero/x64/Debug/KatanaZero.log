@@ -1,0 +1,112 @@
+﻿  CAnimation.cpp
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(104,109): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(104,93): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(104,77): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(104,37): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(103,111): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(103,93): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(103,61): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(103,28): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(116,106): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(116,90): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(116,74): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(116,39): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(115,72): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(115,64): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(115,46): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CAnimation.cpp(115,26): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CAnimator.cpp
+  CButtonUI.cpp
+  CCameraMgr.cpp
+  CCollider.cpp
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CCollider.cpp(63,127): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CCollider.cpp(63,95): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CCollider.cpp(63,63): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CCollider.cpp(63,30): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CColliderMgr.cpp
+  CComponent.cpp
+  CCore.cpp
+  CCursor.cpp
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CCursor.cpp(34,78): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CCursor.cpp(34,69): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CCursor.cpp(34,49): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CCursor.cpp(34,28): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CEventMgr.cpp
+  CFloor.cpp
+  CFloorCeiling.cpp
+  CGroundBreaker.cpp
+  CLineCollider.cpp
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CLineCollider.cpp(55,25): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CLineCollider.cpp(55,19): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CLineCollider.cpp(56,23): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CLineCollider.cpp(56,17): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CMap.cpp
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMap.cpp(53,140): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMap.cpp(53,127): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMap.cpp(53,114): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMap.cpp(53,103): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMap.cpp(53,74): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMap.cpp(53,59): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMap.cpp(53,44): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMap.cpp(53,31): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMap.cpp(95,56): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMap.cpp(95,47): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMap.cpp(95,38): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMap.cpp(95,31): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CMonster.cpp
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMonster.cpp(38,114): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMonster.cpp(38,99): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMonster.cpp(38,67): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CMonster.cpp(38,34): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CObject.cpp
+  CPanelUI.cpp
+  CPlayer.cpp
+  CResource.cpp
+  CResourceMgr.cpp
+  CRigidBody.cpp
+  CScene.cpp
+  CSceneMgr.cpp
+  CScene_Start.cpp
+  CScene_Tool.cpp
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CScene_Tool.cpp(99,16): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CScene_Tool.cpp(100,16): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CStair.cpp
+  CSword.cpp
+  CTexture.cpp
+  CTile.cpp
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTile.cpp(32,78): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTile.cpp(32,55): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTile.cpp(32,39): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTile.cpp(32,26): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTile.cpp(35,55): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTile.cpp(35,46): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTile.cpp(35,37): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTile.cpp(35,24): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CTileUI.cpp
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTileUI.cpp(61,44): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTileUI.cpp(61,35): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTileUI.cpp(61,26): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTileUI.cpp(61,19): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTileUI.cpp(69,56): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTileUI.cpp(69,39): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTileUI.cpp(69,29): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTileUI.cpp(69,22): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTileUI.cpp(78,56): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTileUI.cpp(78,39): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTileUI.cpp(78,29): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CTileUI.cpp(78,22): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CTopFloor.cpp
+  CUI.cpp
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CUI.cpp(51,54): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CUI.cpp(51,37): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CUI.cpp(51,27): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\family\source\repos\KatanaZero\KatanaZero\CUI.cpp(51,20): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CUIMgr.cpp
+  CWall.cpp
+  KatanaZero.cpp
+  KeyMgr.cpp
+  PathMgr.cpp
+  PenMgr.cpp
+  TimeMgr.cpp
+  pch.cpp
+  KatanaZero.vcxproj -> C:\Users\family\source\repos\KatanaZero\Output\bin_debug\KatanaZero.exe
