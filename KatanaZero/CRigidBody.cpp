@@ -212,8 +212,8 @@ void CRigidBody::Update()
 	std::wstring str = {};
 	str += _Buffer;
 
-	if(dynamic_cast<CPlayer*>(Owner) == nullptr)
-		SetWindowText(CCore::Create()->GetWindowData().hwnd, str.c_str());
+	//if(dynamic_cast<CPlayer*>(Owner) != nullptr)
+		//SetWindowText(CCore::Create()->GetWindowData().hwnd, str.c_str());
 
 	//»˚ √ ±‚»≠
 	m_Force = doublepoint{ 0,0 };

@@ -106,6 +106,12 @@ enum class ANIMATOR_TYPE
 	END,
 };
 
+enum class Main_Order
+{
+	PlayerDetected,
+	End,
+};
+
 enum class Move_Order
 {
 	Start,
@@ -119,6 +125,21 @@ enum class Move_Order
 
 	End,
 
+};
+
+enum class Action_Order
+{
+	IdleLeft,
+	IdleRight,
+	TurnLeft,
+	TurnRight,
+	AttackLeft,
+	AttackRight,
+	WalkRight,
+	WalkLeft,
+	RunRight,
+	RunLeft,
+	End,
 };
 
 union CollisionID

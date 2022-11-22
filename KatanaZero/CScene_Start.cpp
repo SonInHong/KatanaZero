@@ -4,6 +4,7 @@
 #include "CPlayer.h"
 #include "CMap.h"
 #include "CMonster.h"
+#include "CGrunt.h"
 #include "CColliderMgr.h"
 #include "CCameraMgr.h"
 #include "CCore.h"
@@ -61,9 +62,10 @@ void CScene_Start::Enter()
 	AddObject(_pObj, GROUP_TYPE::PLAYER);
 
 	//Monster 추가
-	CMonster* _pMon = new CMonster;
+	CGrunt* _pMon = new CGrunt;
 	_pMon->SetPos(doublepoint{ 600,500 });
-
+	_pMon->SetScale(doublepoint{15,30});
+	_pMon->SetResize(doublepoint{ 2,2 });
 	AddObject(_pMon, GROUP_TYPE::MONSTER);
 
 	//Floor 추가

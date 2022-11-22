@@ -15,7 +15,9 @@ public:
     virtual void Update();
     virtual void Render(HDC _dc);
 
-private:
+    void SetLookDirection(int b) { LookDirection = b; }
+
+protected:
     CTexture* Texture;
     int LookDirection;
     doublepoint PrevPos;
@@ -23,6 +25,11 @@ private:
     bool AttackOnAir;
     long double AttackTimer;
     bool AttackTimerSwitch;
+
+    //¿À´õµé
+    Main_Order MainOrder;
+    Move_Order MoveOrder;
+    Action_Order ActionOrder;
 
     void MoveLeft();
     void MoveRight();

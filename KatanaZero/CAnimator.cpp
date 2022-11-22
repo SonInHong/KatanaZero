@@ -141,15 +141,20 @@ void CAnimator::Play(const std::wstring& _name)
 
 void CAnimator::StartPlaying(const std::wstring& _name)
 {
-	if (m_pCurAnim != nullptr)
-		m_pCurAnim->Reset();
-
+	
 	CAnimation* p = FindAnimation(_name);
 
 	if (p == nullptr)
 		return;
 
-	p->Reset();
+	if (p != m_pCurAnim)
+	{
+		if (m_pCurAnim != nullptr)
+			m_pCurAnim->Reset();
+
+		p->Reset();
+	}
+		
 
 	m_pCurAnim = p;
 }

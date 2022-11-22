@@ -154,6 +154,9 @@
     <Filter Include="Engine\Managers\CNodeMgr\Node">
       <UniqueIdentifier>{eb8359e4-83c2-40a9-a46f-593ab02441b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\CObject\CMonster\CGrunt">
+      <UniqueIdentifier>{1844fd26-663d-4f93-bdc3-51fbc707262b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -297,6 +300,9 @@
     <ClInclude Include="CNodeMgr.h">
       <Filter>Engine\Managers\CNodeMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CGrunt.h">
+      <Filter>Engine\CObject\CMonster\CGrunt</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KatanaZero.cpp">
@@ -427,6 +433,9 @@
     </ClCompile>
     <ClCompile Include="CNodeMgr.cpp">
       <Filter>Engine\Managers\CNodeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CGrunt.cpp">
+      <Filter>Engine\CObject\CMonster\CGrunt</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

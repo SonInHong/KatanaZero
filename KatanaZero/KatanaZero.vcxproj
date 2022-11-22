@@ -158,6 +158,7 @@
     <ClInclude Include="CEventMgr.h" />
     <ClInclude Include="CFloor.h" />
     <ClInclude Include="CGroundBreaker.h" />
+    <ClInclude Include="CGrunt.h" />
     <ClInclude Include="CLineCollider.h" />
     <ClInclude Include="CMap.h" />
     <ClInclude Include="CNodeMgr.h" />
@@ -207,6 +208,7 @@
     <ClCompile Include="CEventMgr.cpp" />
     <ClCompile Include="CFloor.cpp" />
     <ClCompile Include="CGroundBreaker.cpp" />
+    <ClCompile Include="CGrunt.cpp" />
     <ClCompile Include="CLineCollider.cpp" />
     <ClCompile Include="CMap.cpp" />
     <ClCompile Include="CNodeMgr.cpp" />
