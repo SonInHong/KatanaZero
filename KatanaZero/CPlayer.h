@@ -2,6 +2,8 @@
 #include "CObject.h"
 #include "CTexture.h"
 
+class CFloor;
+
 class CPlayer :
     public CObject
 {
@@ -17,6 +19,7 @@ public:
 
     void SlashSword(double _Angle);
     void BreakGround();
+    
 
 private:
     CTexture* Texture;
@@ -27,7 +30,7 @@ private:
     long double AttackTimer;
     bool AttackTimerSwitch;
     
-
+    
 
 
     

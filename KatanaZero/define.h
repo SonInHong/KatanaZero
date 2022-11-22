@@ -106,6 +106,21 @@ enum class ANIMATOR_TYPE
 	END,
 };
 
+enum class Move_Order
+{
+	Start,
+	Stay,
+	MoveRight,
+	MoveLeft,
+	ClimbDownRight,
+	ClimbDownLeft,
+	MoveToTopFloorRight,
+	MoveToTopFloorLeft,
+
+	End,
+
+};
+
 union CollisionID
 {
 	struct

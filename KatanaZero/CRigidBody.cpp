@@ -5,6 +5,7 @@
 #include <math.h>
 #include "KeyMgr.h"
 #include "CCore.h"
+#include "CFloor.h"
 
 CRigidBody::CRigidBody()
 	:m_Mass(50)
@@ -196,16 +197,23 @@ void CRigidBody::Update()
 
 	Owner->SetPos(m_NextPos);
 
+	doublepoint RFpos = { 0,0 };
+	
+	if (Owner->GetRecentFloor())
+	{
+		RFpos = Owner->GetRecentFloor()->GetPos();
+	}
 	
 	//µğ¹ö±ë¿ë
 	wchar_t _Buffer[250];
-	swprintf_s(_Buffer,  L"DeltaTime: %f, Velocity.x: %f, Velocity.y: %f, OnGround: %d, OnStair: %d, OnJump: %d, OnWall: %d, WallGrab: %d, Roll: %d, Flip:%d. Attack:%d",
-		TimeMgr::Create()->dt(), m_Velocity.x, m_Velocity.y, m_OnGround, m_OnStair, m_Jump, m_OnWall, m_WallGrab, m_Roll, m_Flip, m_Attack);
+	swprintf_s(_Buffer,  L"RecentFloor: (%f, %f), DeltaTime: %f, Velocity.x: %f, Velocity.y: %f, OnGround: %d, OnStair: %d, OnJump: %d, OnWall: %d, WallGrab: %d, Roll: %d, Flip:%d. Attack:%d",
+		RFpos.x, RFpos.y, TimeMgr::Create()->dt(), m_Velocity.x, m_Velocity.y, m_OnGround, m_OnStair, m_Jump, m_OnWall, m_WallGrab, m_Roll, m_Flip, m_Attack);
 
 	std::wstring str = {};
 	str += _Buffer;
 
-	SetWindowText(CCore::Create()->GetWindowData().hwnd, str.c_str());
+	if(dynamic_cast<CPlayer*>(Owner) == nullptr)
+		SetWindowText(CCore::Create()->GetWindowData().hwnd, str.c_str());
 
 	//Èû ÃÊ±âÈ­
 	m_Force = doublepoint{ 0,0 };

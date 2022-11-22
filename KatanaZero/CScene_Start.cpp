@@ -16,6 +16,7 @@
 #include "CWall.h"
 #include "CFloorCeiling.h"
 #include "CCursor.h"
+#include "CNodeMgr.h"
 
 CScene_Start::CScene_Start()
 {
@@ -32,6 +33,10 @@ void CScene_Start::Enter()
 
 	//ShowWindow(CCore::Create()->GetToolWindowData().hwnd, SW_NORMAL);
 	//UpdateWindow(CCore::Create()->GetToolWindowData().hwnd);
+
+
+	//³ëµå Å×½ºÆ®
+	
 
 	//Ä«¸Þ¶ó¸®¼Â
 	CCameraMgr::Create()->Reset();
@@ -57,53 +62,55 @@ void CScene_Start::Enter()
 
 	//Monster Ãß°¡
 	CMonster* _pMon = new CMonster;
-	_pMon->SetPos(doublepoint{ 600,100 });
+	_pMon->SetPos(doublepoint{ 600,500 });
 
-	//AddObject(_pMon, GROUP_TYPE::MONSTER);
+	AddObject(_pMon, GROUP_TYPE::MONSTER);
 
 	//Floor Ãß°¡
 	
-	CStair* _pStair = new CStair;
-	_pStair->SetScale(doublepoint{ 300, 300 });
-	_pStair->SetPos(doublepoint{ 905, 440 });
-	_pStair->SetDir(Right);
-	AddObject(_pStair, GROUP_TYPE::FLOOR);
+	CStair* _pStair1 = new CStair;                                 //¿À¸¥ÂÊ Å« °è´Ü
+	_pStair1->SetScale(doublepoint{ 300, 300 });
+	_pStair1->SetPos(doublepoint{ 905, 440 });
+	_pStair1->SetDir(Right);
+	AddObject(_pStair1, GROUP_TYPE::FLOOR);
 
-	_pStair = new CStair;
-	_pStair->SetScale(doublepoint{ 60, 60 });
-	_pStair->SetPos(doublepoint{ 510, 320 });
-	_pStair->SetDir(Left);
-	AddObject(_pStair, GROUP_TYPE::FLOOR);
+	CStair* _pStair2 = new CStair;                                         //¿ÞÂÊ ÀÛÀº °è´Ü
+	_pStair2->SetScale(doublepoint{ 60, 60 });
+	_pStair2->SetPos(doublepoint{ 510, 320 });
+	_pStair2->SetDir(Left);
+	AddObject(_pStair2, GROUP_TYPE::FLOOR);
 
-	CFloor* _pFloor = new CFloor;
-	_pFloor->SetScale(doublepoint{ 800, 35 });
-	_pFloor->SetPos(doublepoint{ 370, 595 });
-	AddObject(_pFloor, GROUP_TYPE::FLOOR);
+	CFloor* _pFloor1 = new CFloor;									//¸ÞÀÎ ¹Ù´Ú
+	_pFloor1->SetScale(doublepoint{ 800, 35 });
+	_pFloor1->SetPos(doublepoint{ 370, 595 });
+	AddObject(_pFloor1, GROUP_TYPE::FLOOR);
 
-	_pFloor = new CFloor;
-	_pFloor->SetScale(doublepoint{ 200, 60 });
-	_pFloor->SetPos(doublepoint{ 1156, 319 });
-	AddObject(_pFloor, GROUP_TYPE::FLOOR);
+	CFloor* _pFloor2 = new CFloor;											//2Ãþ°è´Ü ¿À¸¥ÂÊ ¹Ù´Ú
+	_pFloor2->SetScale(doublepoint{ 200, 60 });
+	_pFloor2->SetPos(doublepoint{ 1156, 319 });
+	AddObject(_pFloor2, GROUP_TYPE::FLOOR);
 		
-	_pFloor = new CFloor;
+	CFloor* _pFloor = new CFloor;
 	_pFloor->SetScale(doublepoint{ 480, 60 });
 	_pFloor->SetPos(doublepoint{ 240, 319 });
 	//AddObject(_pFloor, GROUP_TYPE::FLOOR);
 
-	_pFloor = new CFloor;
-	_pFloor->SetScale(doublepoint{ 320, 60 });
-	_pFloor->SetPos(doublepoint{ 320, 319 });
-	AddObject(_pFloor, GROUP_TYPE::FLOOR);
+	
 
-	CTopFloor* _pTopFloor = new CTopFloor;  
-	_pTopFloor->SetScale(doublepoint{ 575, 60 });
-	_pTopFloor->SetPos(doublepoint{ 767.5, 319 });
-	AddObject(_pTopFloor, GROUP_TYPE::FLOOR);
+	CTopFloor* _pTopFloor1 = new CTopFloor;							//°è´Ü ¿ÞÂÊ ¹Ù´Ú
+	_pTopFloor1->SetScale(doublepoint{ 575, 60 });
+	_pTopFloor1->SetPos(doublepoint{ 767.5, 319 });
+	AddObject(_pTopFloor1, GROUP_TYPE::FLOOR);
 
-	_pTopFloor = new CTopFloor;
-	_pTopFloor->SetScale(doublepoint{ 200, 35 });
-	_pTopFloor->SetPos(doublepoint{ 75, 117.5 });
-	AddObject(_pTopFloor, GROUP_TYPE::FLOOR);
+	CTopFloor* _pTopFloor2 = new CTopFloor;										// ±¼¶Ò À§ ¹Ù´Ú
+	 _pTopFloor2->SetScale(doublepoint{ 200, 35 });
+	 _pTopFloor2->SetPos(doublepoint{ 75, 117.5 });
+	AddObject(_pTopFloor2, GROUP_TYPE::FLOOR);
+
+	CTopFloor* _pTopFloor3 = new CTopFloor;											//2Ãþ ¹® µÚ ¹Ù´Ú
+	_pTopFloor3->SetScale(doublepoint{ 480, 60 });
+	_pTopFloor3->SetPos(doublepoint{ 240, 319 });
+	AddObject(_pTopFloor3, GROUP_TYPE::FLOOR);
 
 	CFloorCeiling* _pCeiling = new CFloorCeiling;
 	_pCeiling->SetScale(doublepoint{ 60, 10 });
@@ -111,7 +118,25 @@ void CScene_Start::Enter()
 	//AddObject(_pCeiling, GROUP_TYPE::FLOOR);
 
 
-	
+	//¹Ù´Ú ³ëµå ¿¬°á
+	_pStair1->Connect(_pFloor1, Move_Order::MoveLeft);
+	_pFloor1->Connect(_pStair1, Move_Order::MoveRight);
+
+	_pStair1->Connect(_pFloor2, Move_Order::MoveRight);
+	_pFloor2->Connect(_pStair1, Move_Order::ClimbDownLeft);
+
+	_pFloor2->Connect(_pTopFloor1, Move_Order::MoveToTopFloorLeft);
+	_pTopFloor1->Connect(_pFloor2, Move_Order::MoveRight);
+
+	_pTopFloor1->Connect(_pTopFloor3, Move_Order::MoveToTopFloorLeft);
+	_pTopFloor3->Connect(_pTopFloor1, Move_Order::MoveToTopFloorRight);
+
+	_pTopFloor3->Connect(_pStair2, Move_Order::ClimbDownRight);
+	_pStair2->Connect(_pTopFloor3, Move_Order::MoveToTopFloorLeft);
+
+	_pTopFloor3->Connect(_pTopFloor2, Move_Order::Stay);
+
+	// º®
 	CWall* _pWall = new CWall;
 	_pWall->SetScale(doublepoint{ 35,700 });
 	_pWall->SetPos(doublepoint{ 17,300 });
@@ -133,7 +158,6 @@ void CScene_Start::Enter()
 	AddObject(_pWall, GROUP_TYPE::FLOOR);
 
 	
-
 	
 
 	
@@ -168,6 +192,7 @@ void CScene_Start::Enter()
 	CColliderMgr::Create()->CheckGroup(GROUP_TYPE::PLAYER_PROJECTILE, GROUP_TYPE::MONSTER);
 	CColliderMgr::Create()->CheckGroup(GROUP_TYPE::PLAYER_PROJECTILE, GROUP_TYPE::FLOOR);
 	CColliderMgr::Create()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::FLOOR);
+	CColliderMgr::Create()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::FLOOR);
 }
 
 void CScene_Start::Exit()

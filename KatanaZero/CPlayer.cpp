@@ -14,7 +14,9 @@
 #include "CRigidBody.h"
 #include "CCollider.h"
 #include "CGroundBreaker.h"
-
+#include "CFloor.h"
+#include "CTopFloor.h"
+#include "CStair.h"
 
 #define Right 1
 #define Left -1
@@ -556,20 +558,20 @@ void CPlayer::GetInput()
 				dynamic_cast<CAnimator*>(m_Component[(UINT)COMPONENT_TYPE::ANIMATOR][0])->Reset();
 			}
 
-			if (KeyMgr::Create()->key(Key::D).pressed)
-			{
-				if (KeyMgr::Create()->key(Key::D).key_state == KeyState::TAP)
-					TimeMgr::Create()->StartStopWatch(0.05);
+if (KeyMgr::Create()->key(Key::D).pressed)
+{
+	if (KeyMgr::Create()->key(Key::D).key_state == KeyState::TAP)
+		TimeMgr::Create()->StartStopWatch(0.05);
 
-				if (TimeMgr::Create()->Timeover())
-				{
-					WallGrab = 0;
+	if (TimeMgr::Create()->Timeover())
+	{
+		WallGrab = 0;
 
-				}
-			}
+	}
+}
 
-			if (KeyMgr::Create()->key(Key::D).key_state == KeyState::RELEASE)
-				TimeMgr::Create()->EndStopWatch();
+if (KeyMgr::Create()->key(Key::D).key_state == KeyState::RELEASE)
+TimeMgr::Create()->EndStopWatch();
 
 		}
 	}
@@ -650,14 +652,58 @@ void CPlayer::GetInput()
 			WallGrab = 1;
 		}
 	}
+
+
+	
+
+	// 공중에 떠있을 경우 recentfloor 추정
+	doublepoint playerpos = {};
+	double min = 100000;
+
+	playerpos.y = ((CCollider*)m_Component[(UINT)COMPONENT_TYPE::COLLIDER][0])->GetAbsPos().y + ((CCollider*)m_Component[(UINT)COMPONENT_TYPE::COLLIDER][0])->GetScale().y / 2;
+	playerpos.x = ((CCollider*)m_Component[(UINT)COMPONENT_TYPE::COLLIDER][0])->GetAbsPos().x;
+
+	
+	if (OnGround == false && OnStair == 0)
+	{
+		
+
+		for (int i = 0; i<CSceneMgr::Create()->GetCurScene()->GetGroupObject(GROUP_TYPE::FLOOR).size(); ++i)
+		{
+			CFloor* CF = dynamic_cast<CFloor*>(CSceneMgr::Create()->GetCurScene()->GetGroupObject(GROUP_TYPE::FLOOR)[i]);
+			CStair* CS = dynamic_cast<CStair*>(CSceneMgr::Create()->GetCurScene()->GetGroupObject(GROUP_TYPE::FLOOR)[i]);
+			
+			if (CS)
+			{
+				double y = CS->GetPos().y + (CS->GetScale().y * CS->GetResize().y) / 2;
+				double x1 = CS->GetPos().x - (CS->GetScale().x * CS->GetResize().x) / 2;
+				double x2 = CS->GetPos().x + (CS->GetScale().x * CS->GetResize().x) / 2;
+
+				if (y - playerpos.y > 0 && y - playerpos.y < min && playerpos.x > x1 && playerpos.x < x2)
+					RecentFloor = CS;
+
+			}
+
+			else if (CF)
+			{
+				double y = CF->GetPos().y - (CF->GetScale().y * CF->GetResize().y) / 2;
+				double x1 = CF->GetPos().x - (CF->GetScale().x * CF->GetResize().x) / 2;
+				double x2 = CF->GetPos().x + (CF->GetScale().x * CF->GetResize().x) / 2;
+
+				if (y - playerpos.y > 0 && y - playerpos.y < min && playerpos.x > x1 && playerpos.x < x2)
+					RecentFloor = CF;
+			}
+			
+		}
+	}
 }
 
 void CPlayer::Initialize()
 {
 	//충돌체
-	CreateCollider();
+	CreateCollider(doublepoint{ 0,7 });
 
-	dynamic_cast<CCollider*>(m_Component[(UINT)COMPONENT_TYPE::COLLIDER][0])->SetOffSet(doublepoint{ 0,7 });
+	//dynamic_cast<CCollider*>(m_Component[(UINT)COMPONENT_TYPE::COLLIDER][0])->SetOffSet(doublepoint{ 0,7 });
 
 	//애니메이터
 	CreateAnimator();

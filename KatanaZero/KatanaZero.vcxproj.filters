@@ -148,6 +148,12 @@
     <Filter Include="Engine\CObject\CCursor">
       <UniqueIdentifier>{81bb4796-7d92-4fdf-a1fc-1dd0e5b1f4b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Managers\CNodeMgr">
+      <UniqueIdentifier>{320f6077-93e3-4c11-a4ba-20a4c7b80332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Managers\CNodeMgr\Node">
+      <UniqueIdentifier>{eb8359e4-83c2-40a9-a46f-593ab02441b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -285,6 +291,12 @@
     <ClInclude Include="CCursor.h">
       <Filter>Engine\CObject\CCursor</Filter>
     </ClInclude>
+    <ClInclude Include="CNode.h">
+      <Filter>Engine\Managers\CNodeMgr\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="CNodeMgr.h">
+      <Filter>Engine\Managers\CNodeMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KatanaZero.cpp">
@@ -409,6 +421,12 @@
     </ClCompile>
     <ClCompile Include="CCursor.cpp">
       <Filter>Engine\CObject\CCursor</Filter>
+    </ClCompile>
+    <ClCompile Include="CNode.cpp">
+      <Filter>Engine\Managers\CNodeMgr\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="CNodeMgr.cpp">
+      <Filter>Engine\Managers\CNodeMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

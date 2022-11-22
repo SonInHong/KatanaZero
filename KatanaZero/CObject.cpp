@@ -17,6 +17,7 @@ CObject::CObject()
 	, Alive(true)
 	, CameraONOFF(true)
 	, State(Object_State::END)
+	,RecentFloor(nullptr)
 {
 	Resize.x = 1; Resize.y = 1;
 }
@@ -101,6 +102,14 @@ void CObject::CreateCollider()
 	CCollider* p = new CCollider;
 	p->Initialize(this);
 	m_Component[(UINT)COMPONENT_TYPE::COLLIDER].push_back(p);
+}
+
+void CObject::CreateCollider(doublepoint p)
+{
+	CCollider* t = new CCollider;
+	t->Initialize(this);
+	t->SetOffSet(p);
+	m_Component[(UINT)COMPONENT_TYPE::COLLIDER].push_back(t);
 }
 
 void CObject::CreateLineCollider(int dir)

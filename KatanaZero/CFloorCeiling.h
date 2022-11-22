@@ -9,5 +9,6 @@ public:
     virtual ~CFloorCeiling();
 
     virtual bool Collide(CObject* other);
+    virtual bool Colliding(CObject* other);
 };
 

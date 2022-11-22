@@ -160,6 +160,7 @@
     <ClInclude Include="CGroundBreaker.h" />
     <ClInclude Include="CLineCollider.h" />
     <ClInclude Include="CMap.h" />
+    <ClInclude Include="CNodeMgr.h" />
     <ClInclude Include="CPanelUI.h" />
     <ClInclude Include="CRigidBody.h" />
     <ClInclude Include="CScene_Tool.h" />
@@ -184,6 +185,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="KatanaZero.h" />
     <ClInclude Include="KeyMgr.h" />
+    <ClInclude Include="CNode.h" />
     <ClInclude Include="PathMgr.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PenMgr.h" />
@@ -207,6 +209,7 @@
     <ClCompile Include="CGroundBreaker.cpp" />
     <ClCompile Include="CLineCollider.cpp" />
     <ClCompile Include="CMap.cpp" />
+    <ClCompile Include="CNodeMgr.cpp" />
     <ClCompile Include="CPanelUI.cpp" />
     <ClCompile Include="CRigidBody.cpp" />
     <ClCompile Include="CScene_Tool.cpp" />
@@ -229,6 +232,7 @@
     <ClCompile Include="CWall.cpp" />
     <ClCompile Include="KatanaZero.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
+    <ClCompile Include="CNode.cpp" />
     <ClCompile Include="PathMgr.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="PenMgr.cpp" />

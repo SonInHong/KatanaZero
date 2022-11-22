@@ -1,6 +1,9 @@
 #pragma once
 #include "CObject.h"
 #include <map>
+
+class CNodeMgr;
+
 class CFloor :
     public CObject
 {
@@ -16,9 +19,21 @@ public:
 
     std::map<DWORD_PTR, POINT>& GetCollideDir() { return m_CollideDir; }
 
+	struct ConnectedNode
+	{
+		CFloor* node;
+		Move_Order HowToMove;
+	};
+
+	void Connect(CFloor* other, Move_Order how) { ConnectedNodes.push_back(ConnectedNode{ other,how }); }
+   std::vector<ConnectedNode> GetConnectedNodes() { return ConnectedNodes; }
+
 protected:
     std::map<DWORD_PTR, POINT> m_CollideDir;
+	std::vector<ConnectedNode> ConnectedNodes;
     
-
+	friend CNodeMgr;
 };
+
+
 

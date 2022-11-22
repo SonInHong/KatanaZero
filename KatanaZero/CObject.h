@@ -3,6 +3,7 @@ class CTexture;
 class CComponent;
 class CCollider;
 class CRigidBody;
+class CFloor;
 
 class CObject
 {
@@ -16,6 +17,7 @@ protected:
 
 
 	std::vector<CComponent*> m_Component[(UINT)COMPONENT_TYPE::END];
+	CFloor* RecentFloor;
 
 
 
@@ -52,11 +54,15 @@ public:
 	virtual bool DontCollide(CObject* other);
 
 	void CreateCollider();
+	void CreateCollider(doublepoint p);
 	void CreateLineCollider(int dir);
 	void CreateAnimator();
 	void CreateRigidBody();
 
 	const std::vector<CComponent*>& GetComponent(COMPONENT_TYPE _type) { return m_Component[(UINT)_type]; }
+
+	CFloor* GetRecentFloor() { return RecentFloor; }
+	void SetRecentFloor(CFloor* p) { RecentFloor = p; }
 
 };
 

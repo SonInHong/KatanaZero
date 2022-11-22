@@ -61,3 +61,63 @@ bool CFloorCeiling::Collide(CObject* other)
 
 	return false;
 }
+
+bool CFloorCeiling::Colliding(CObject* other)
+{
+	std::map<DWORD_PTR, POINT>::iterator iter = m_CollideDir.find((DWORD_PTR)other);
+	if (iter == m_CollideDir.end())
+	{
+		m_CollideDir.insert(std::make_pair((DWORD_PTR)other, POINT{ 0,0 }));
+		iter = m_CollideDir.find((DWORD_PTR)other);
+	}
+
+	doublepoint OtherPosition = ((CCollider*)other->GetComponent(COMPONENT_TYPE::COLLIDER)[0])->GetAbsPos();
+	doublepoint OtherScale = ((CCollider*)other->GetComponent(COMPONENT_TYPE::COLLIDER)[0])->GetScale();
+
+	double dx = (OtherScale.x + Scale.x * Resize.x) / 2 - abs(Pos.x - OtherPosition.x);
+	double dy = (OtherScale.y + Scale.y * Resize.y) / 2 - abs(Pos.y - OtherPosition.y);
+
+
+	if (iter->second.y == -1 || iter->second.y == 1)
+	{
+		doublepoint OtherPosition = ((CCollider*)other->GetComponent(COMPONENT_TYPE::COLLIDER)[0])->GetAbsPos();
+		doublepoint OtherScale = ((CCollider*)other->GetComponent(COMPONENT_TYPE::COLLIDER)[0])->GetScale();
+
+		if (other->GetComponent(COMPONENT_TYPE::RIGIDBODY).empty())
+			return true;
+
+		CRigidBody* p = dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0]);
+		if (p)
+		{
+
+			double dy = (OtherScale.y + Scale.y * Resize.y) / 2 - abs(Pos.y - OtherPosition.y);
+
+			other->GetPos().y -= iter->second.y * dy;
+			other->SetState(Object_State::ON_FLOOR);
+
+			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnGround(true);
+			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnStair(0);
+
+			other->GetComponent(COMPONENT_TYPE::COLLIDER)[0]->Update();
+
+			
+		}
+
+	}
+
+	if (iter->second.x == 1 || iter->second.x == -1)
+	{
+		if (other->GetComponent(COMPONENT_TYPE::RIGIDBODY).empty())
+			return true;
+
+		CRigidBody* p = dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0]);
+		if (p)
+		{
+			other->GetPos().x += iter->second.x * dx;
+			p->GetVelocity().x = 0;
+		}
+	}
+
+
+	return true;
+}

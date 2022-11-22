@@ -34,22 +34,6 @@ bool CStair::Collide(CObject* other)
 	doublepoint OtherScale = ((CCollider*)other->GetComponent(COMPONENT_TYPE::COLLIDER)[0])->GetScale();
 
 
-	// dir 방향에 따라서 사각형의 아래점 X,Y 중 하나를 골라냄
-	// 그 점을 삼각형의 밑변과 옆변과의 위치비교
-	// 밑변보다 아래에 있다면 밑이나 계단쪽 방향에서 부딪힘
-	// 옆변을 벗어나 있다면 벽쪽 방향에서 부딪힘
-
-
-
-
-
-
-
-
-
-
-
-
 
 	CRigidBody* p = dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0]);
 	if (p)
@@ -103,6 +87,8 @@ bool CStair::Collide(CObject* other)
 				//other->GetPos().x -= dir * dy;
 
 			}
+
+			other->SetRecentFloor(this);
 		}
 
 
@@ -187,6 +173,8 @@ bool CStair::Colliding(CObject* other)
 				//other->GetPos().x -= dir * dy;
 
 			}
+
+			other->SetRecentFloor(this);
 		}
 
 		other->SetState(Object_State::ON_FLOOR);

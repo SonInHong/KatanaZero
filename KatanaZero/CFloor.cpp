@@ -10,6 +10,7 @@
 
 CFloor::CFloor()
 	:m_CollideDir{}
+	,ConnectedNodes{}
 {
 }
 
@@ -76,7 +77,8 @@ bool CFloor::Collide(CObject* other)
 
 			other->GetComponent(COMPONENT_TYPE::COLLIDER)[0]->Update();
 
-			
+			if (iter->second.y == 1)
+				other->SetRecentFloor(this);
 		}
 	}
 
@@ -134,7 +136,8 @@ bool CFloor::Colliding(CObject* other)
 
 			other->GetComponent(COMPONENT_TYPE::COLLIDER)[0]->Update();
 
-			
+			if (iter->second.y == 1)
+				other->SetRecentFloor(this);
 		}
 
 	}
