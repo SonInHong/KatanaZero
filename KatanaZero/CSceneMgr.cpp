@@ -3,6 +3,8 @@
 #include "CScene_Start.h"
 #include "CScene_Tool.h"
 #include "CCore.h"
+#include "CTexture.h"
+#include "CResourceMgr.h"
 
 
 CSceneMgr::CSceneMgr()
@@ -51,7 +53,9 @@ void CSceneMgr::Render(HDC _dc)
 	SelectObject(_dc, oldbrush);
 
 	m_pCurScene->Render(_dc);
+	
 
+	
 
 	BitBlt(temp.hdc, 0, 0, temp.width, temp.height, _dc, 0, 0, SRCCOPY);
 }

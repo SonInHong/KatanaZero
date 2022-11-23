@@ -66,13 +66,15 @@ doublepoint CCameraMgr::RealScale(doublepoint CameraScale)
     return y;
 }
 
+#define alpha 0.7
+
 void CCameraMgr::Reset()
 {
     LeftTop.x = 0;
     LeftTop.y = 0;
 
-    Scale.y = 0.65 * CCore::Create()->GetWindowData().height;
-    Scale.x = 0.65 * CCore::Create()->GetWindowData().width;
+    Scale.y = alpha * CCore::Create()->GetWindowData().height;
+    Scale.x = alpha * CCore::Create()->GetWindowData().width;
 }
 
 void CCameraMgr::Update()

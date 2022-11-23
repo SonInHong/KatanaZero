@@ -46,7 +46,7 @@ void TimeMgr::Update()
 
 		wchar_t _Buffer[250];
 		swprintf_s(_Buffer, L"FPS: %d , Delta Time: %f ", m_FPS, delta_time);
-		//SetWindowText(CCore::Create()->GetWindowData().hwnd, _Buffer);
+		SetWindowText(CCore::Create()->GetWindowData().hwnd, _Buffer);
 
 		count = 0;
 		TimeSum = 0;

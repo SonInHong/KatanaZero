@@ -43,6 +43,8 @@ struct doublepoint
 	}
 
 	double Norm() { return sqrt(pow(x, 2) + pow(y, 2)); }
+
+	double Angle() { return atan2(y, x) * 180 / M_PI; }
 	
 };
 
@@ -62,9 +64,9 @@ enum class GROUP_TYPE
 	MAP,
 	FLOOR,
 	TILE,
+	MONSTER,
 	PLAYER,
 	PLAYER_PROJECTILE,
-	MONSTER,
 
 	UI = 30,
 	CURSOR = 31,
@@ -108,7 +110,10 @@ enum class ANIMATOR_TYPE
 
 enum class Main_Order
 {
+	RoamAround,
+	GetToRoamingPoint,
 	PlayerDetected,
+	GetHurt,
 	End,
 };
 
@@ -122,6 +127,8 @@ enum class Move_Order
 	ClimbDownLeft,
 	MoveToTopFloorRight,
 	MoveToTopFloorLeft,
+
+	CannotDetectPlayer,
 
 	End,
 
@@ -139,6 +146,8 @@ enum class Action_Order
 	WalkLeft,
 	RunRight,
 	RunLeft,
+	HurtGround,
+	HurtFly,
 	End,
 };
 

@@ -6,6 +6,7 @@
 #include "CEventMgr.h"
 #include "CAnimator.h"
 #include "CAnimation.h"
+#include "CMonster.h"
 
 
 
@@ -84,8 +85,15 @@ void CSword::Render(HDC _dc)
 
 bool CSword::Collide(CObject* other)
 {
+	CMonster* mon = dynamic_cast<CMonster*>(other);
+	
+	if (mon && mon->MainOrder != Main_Order::End)
+	{
+		mon->MainOrder = Main_Order::GetHurt;
+		mon->HurtAngle = Angle;
 
-
+		TimeMgr::Create()->StartTimer();
+	}
 
 	return true;
 }

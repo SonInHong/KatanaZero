@@ -72,6 +72,7 @@ bool CFloor::Collide(CObject* other)
 			other->GetPos().y -= iter->second.y * dy;
 			other->SetState(Object_State::ON_FLOOR);
 
+			p->GetVelocity().y = 0;
 			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnGround(true);
 			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnStair(0);
 
@@ -131,6 +132,7 @@ bool CFloor::Colliding(CObject* other)
 			other->GetPos().y -= iter->second.y * dy;
 			other->SetState(Object_State::ON_FLOOR);
 
+			p->GetVelocity().y = 0;
 			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnGround(true);
 			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnStair(0);
 

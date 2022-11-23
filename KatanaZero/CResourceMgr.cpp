@@ -38,10 +38,17 @@ CTexture* CResourceMgr::MakeSpriteSheet(std::wstring Path, std::wstring name)
 		int height = 0;
 		int count = 0;
 
-		for (auto& p : std::filesystem::recursive_directory_iterator(_path))
+		
+
+		std::filesystem::directory_iterator iter(_path);
+
+
+		//for (auto& p : std::filesystem::recursive_directory_iterator(_path))
+		while(iter != std::filesystem::end(iter))
 		{
+			
 			CTexture* _Texture = new CTexture;
-			std::wstring _filepath = Path + L"\\" + p.path().filename().wstring();
+			std::wstring _filepath = Path + L"\\" + iter->path().filename().wstring(); //p.path().filename().wstring();
 			_Texture->Load(_filepath);
 			
 			temp.push_back(_Texture);
@@ -50,6 +57,7 @@ CTexture* CResourceMgr::MakeSpriteSheet(std::wstring Path, std::wstring name)
 			width = max(_Texture->GetWidth(), width);
 			height = max(_Texture->GetHeight(), height);
 			++count;
+			++iter;
 		}
 
 		sprite->MakeBlankTexture(width*count, height);

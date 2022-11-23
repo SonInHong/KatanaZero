@@ -8,6 +8,10 @@ private:
 	LARGE_INTEGER m_PrevCount;
 	LARGE_INTEGER m_CurCount;
 	LARGE_INTEGER m_Frequency;
+	
+	LARGE_INTEGER PrevTimer;
+	LARGE_INTEGER FinishTimer;
+
 	double delta_time;
 	int m_FPS;
 	int count;
@@ -47,6 +51,13 @@ public:
 		else
 			return false;
 		
+	}
+
+	void StartTimer() { QueryPerformanceCounter(&PrevTimer); }
+	double CheckTimer() 
+	{
+		QueryPerformanceCounter(&FinishTimer);
+		return ((double)FinishTimer.QuadPart - (double)PrevTimer.QuadPart) / (double)m_Frequency.QuadPart; 
 	}
 	
 };

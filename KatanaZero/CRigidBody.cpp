@@ -11,6 +11,7 @@ CRigidBody::CRigidBody()
 	:m_Mass(50)
 	,m_MaxSpeed(10000)
 	,m_MaxXspeed(350)
+	,m_MaxXWalkspeed(150)
 	,m_Friction(0)
 	,m_PrevPos{}
 	,m_Force{}
@@ -27,6 +28,7 @@ CRigidBody::CRigidBody()
 	,m_WallGrab(0)
 	,m_Roll(0)
 	,m_Flip(0)
+	,m_Walk(false)
 {
 }
 
@@ -55,21 +57,7 @@ void CRigidBody::Update()
 		int a = 0; //디버깅용
 	}
 
-	//벽에 닿으면 X속도를 0으로
-	if (m_OnWall != 0)
-	{
-		if (m_OnWall == 1)
-		{
-			if (m_Velocity.x < 0)
-				m_Velocity.x = 0;
-		}
-
-		if (m_OnWall == -1)
-		{
-			if (m_Velocity.x > 0)
-				m_Velocity.x = 0;
-		}
-	}
+	
 
 	m_PrevPos = Owner->GetPos();
 		
@@ -121,15 +109,16 @@ void CRigidBody::Update()
 
 	if (m_Attack == false)
 	{
-		if (abs(m_Velocity.x) > m_MaxXspeed)
+		if (m_Run && abs(m_Velocity.x) > m_MaxXspeed)
 			m_Velocity.x = m_Velocity.x / abs(m_Velocity.x) * m_MaxXspeed;
+
+		if(m_Walk && abs(m_Velocity.x) > m_MaxXWalkspeed)
+			m_Velocity.x = m_Velocity.x / abs(m_Velocity.x) * m_MaxXWalkspeed;
 	}
 	
 	if (abs(m_Velocity.x) < 3)
 		m_Velocity.x = 0;
 
-	
-	
 	
 
 	if (m_Roll == 1) // 구르기
@@ -139,14 +128,9 @@ void CRigidBody::Update()
 		m_Velocity.x = -500;
 
 	// y방향 속도 계산
-	if (m_OnGround == true || m_OnStair)
-		m_Velocity.y = 0; //땅에 닿고 있으면 0으로
+	//if ( m_OnGround||m_OnStair)
+		//m_Velocity.y = 0; //땅에 닿고 있으면 0으로
 
-	if (m_OnStair)
-	{
-		//m_Velocity.y = -m_OnStair * m_Velocity.x; // 계단이면 계단모양에 맞게 보정
-	}
-	
 		
 	m_Velocity.y = m_Velocity.y + m_Accelaration.y * TimeMgr::Create()->dt(); // 중력 적용
 	m_Velocity.y += m_GivenVelocity.y;
@@ -168,21 +152,16 @@ void CRigidBody::Update()
 			m_Velocity.y = -250;
 		}
 
-	//Attack일 경우
+	doublepoint m_NextPos;
 
-		
-	
-	
-		doublepoint m_NextPos;
-
-	if(m_OnStair==0)
-		m_NextPos = m_PrevPos + m_Velocity * TimeMgr::Create()->dt();
-
-	else
+	if(m_OnStair)// && (m_Walk ||m_Run) )
 	{
 		m_NextPos.x = m_PrevPos.x + ( (1/sqrt(2)) * m_Velocity.x + m_OnStair * (1 / sqrt(2)) * m_Velocity.y) * TimeMgr::Create()->dt();
 		m_NextPos.y = m_PrevPos.y + (- m_OnStair*(1 / sqrt(2)) * m_Velocity.x + (1 / sqrt(2)) * m_Velocity.y) * TimeMgr::Create()->dt();
 	}
+
+	else
+		m_NextPos = m_PrevPos + m_Velocity * TimeMgr::Create()->dt();
 
 	//벽을 잡고있을 경우 몸을 계속 벽쪽으로 끌어당겨준다. 숫자: 탈출속도
 	#define EscapeVelocity 10
@@ -212,13 +191,11 @@ void CRigidBody::Update()
 	std::wstring str = {};
 	str += _Buffer;
 
-	//if(dynamic_cast<CPlayer*>(Owner) != nullptr)
-		//SetWindowText(CCore::Create()->GetWindowData().hwnd, str.c_str());
+	if(dynamic_cast<CPlayer*>(Owner) != nullptr)
+		SetWindowText(CCore::Create()->GetWindowData().hwnd, str.c_str());
 
 	//힘 초기화
 	m_Force = doublepoint{ 0,0 };
-
-	
 
 	//
 	m_GivenVelocity.x = 0; m_GivenVelocity.y = 0;
@@ -230,7 +207,7 @@ void CRigidBody::Update()
 	//
 	m_OnGround = false;
 	m_OnStair = 0;
-
+	
 	
 
 }

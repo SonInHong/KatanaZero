@@ -50,8 +50,7 @@ bool CFloorCeiling::Collide(CObject* other)
 			other->GetPos().y -= iter->second.y * dy;
 			other->SetState(Object_State::ON_FLOOR);
 
-			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnGround(true);
-			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnStair(0);
+			p->GetVelocity().y = 0;
 
 			other->GetComponent(COMPONENT_TYPE::COLLIDER)[0]->Update();
 
@@ -78,7 +77,7 @@ bool CFloorCeiling::Colliding(CObject* other)
 	double dy = (OtherScale.y + Scale.y * Resize.y) / 2 - abs(Pos.y - OtherPosition.y);
 
 
-	if (iter->second.y == -1 || iter->second.y == 1)
+	if (iter->second.y == -1 )
 	{
 		doublepoint OtherPosition = ((CCollider*)other->GetComponent(COMPONENT_TYPE::COLLIDER)[0])->GetAbsPos();
 		doublepoint OtherScale = ((CCollider*)other->GetComponent(COMPONENT_TYPE::COLLIDER)[0])->GetScale();
@@ -95,8 +94,7 @@ bool CFloorCeiling::Colliding(CObject* other)
 			other->GetPos().y -= iter->second.y * dy;
 			other->SetState(Object_State::ON_FLOOR);
 
-			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnGround(true);
-			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnStair(0);
+			p->GetVelocity().y = 0;
 
 			other->GetComponent(COMPONENT_TYPE::COLLIDER)[0]->Update();
 

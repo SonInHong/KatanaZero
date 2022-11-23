@@ -59,15 +59,16 @@ bool CStair::Collide(CObject* other)
 				p->GetVelocity().x = 0;
 			}
 				
-			if (dy < dx || dy<0.5)
+			if (dy < dx || dy < 0.5)
 			{
 				other->GetPos().y += dy;
 				p->GetVelocity().y = 0;
 			}
-			
 
 			return false;
 		}
+
+		
 
 		double a = ((CLineCollider*)m_Component[(UINT)COMPONENT_TYPE::COLLIDER][0])->LineFunctionValue(X);
 		double b = ((CLineCollider*)m_Component[(UINT)COMPONENT_TYPE::COLLIDER][0])->LineFunctionValue(Y);
@@ -75,29 +76,40 @@ bool CStair::Collide(CObject* other)
 		
 		double dy = min(max(a, b), c);
 
-		other->GetPos().y -= 0.5* dy;
-		other->GetPos().x -= dir*0.5* dy;
-
-		CRigidBody* p = dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0]);
-		if (p)
+		if (c == dy)
 		{
-			if (p->GetAttack())
-			{
-				//other->GetPos().y += dy;
-				//other->GetPos().x -= dir * dy;
-
-			}
-
-			other->SetRecentFloor(this);
+			other->GetPos().y -= dy;
+			p->SetOnGround(true);
+			p->GetVelocity().y = 0;
 		}
 
+		else
+		{
+			
+				other->GetPos().y -= 0.5 * dy;
+				other->GetPos().x -= dir * 0.5 * dy;
+				p->SetOnStair(dir);
+				p->GetVelocity().y = 0;
 
+			
+			other->SetRecentFloor(this);
+		}
+		
+		if (p->GetAttack())
+		{
+			//other->GetPos().y += dy;
+			//other->GetPos().x -= dir * dy;
+
+		}
+
+		
+		
 		other->SetState(Object_State::ON_FLOOR);
 						
 		other->GetComponent(COMPONENT_TYPE::COLLIDER)[0]->Update();
 
-		dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnStair(dir);
-		dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnGround(false);
+		//dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnStair(dir);
+		//dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnGround(false);
 		
 		return false;
 		
@@ -161,28 +173,43 @@ bool CStair::Colliding(CObject* other)
 
 		double dy = min(max(a, b),c);
 									
-		other->GetPos().y -= 0.5 * dy;
-		other->GetPos().x -= dir*0.5 * dy;
-
-		CRigidBody* p = dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0]);
-		if (p)
+		if (c == dy)
 		{
-			if (p->GetAttack())
-			{
-				//other->GetPos().y += dy;
-				//other->GetPos().x -= dir * dy;
+			other->GetPos().y -= dy;
+			p->GetVelocity().y = 0;
+			p->SetOnGround(true);
+		}
 
-			}
+		else
+		{ 
+			
+				other->GetPos().y -= 0.5 * dy;
+				other->GetPos().x -= dir * 0.5 * dy;
+				p->SetOnStair(dir);
+				p->GetVelocity().y = 0;
+			
+			
 
 			other->SetRecentFloor(this);
 		}
+
+		
+		if (p->GetAttack())
+		{
+			//other->GetPos().y += dy;
+			//other->GetPos().x -= dir * dy;
+
+		}
+
+		
+		
 
 		other->SetState(Object_State::ON_FLOOR);
 		
 		other->GetComponent(COMPONENT_TYPE::COLLIDER)[0]->Update();
 
-		dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnStair(dir);
-		dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnGround(false);
+		//dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnStair(dir);
+		//dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnGround(false);
 
 		return false;
 	}

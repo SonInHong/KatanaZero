@@ -10,6 +10,8 @@ public:
     CTopFloor();
     virtual ~CTopFloor();
 
+    virtual void Render(HDC _dc);
+
     virtual bool Collide(CObject* other);
     virtual bool Colliding(CObject* other);
 

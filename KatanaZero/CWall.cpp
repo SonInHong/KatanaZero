@@ -67,7 +67,8 @@ bool CWall::Collide(CObject* other)
 			//double dx = (other->GetScale().x * other->GetResize().x + Scale.x * Resize.x) / 2 - abs(Pos.x - other->GetPos().x);
 
 			other->GetPos().x += iter->second.x * dx;
-			
+			p->GetVelocity().x = 0;
+
 			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnWall(iter->second.x);
 
 			
@@ -88,7 +89,7 @@ bool CWall::Collide(CObject* other)
 			other->GetPos().y -= iter->second.y * dy;
 			other->SetState(Object_State::ON_FLOOR);
 			
-			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->GetVelocity().y = 0;
+			p->GetVelocity().y = 0;
 
 			if (iter->second.y == 1)
 			{
@@ -131,7 +132,7 @@ bool CWall::Colliding(CObject* other)
 			double dx = (OtherScale.x + Scale.x * Resize.x) / 2 - abs(Pos.x - OtherPosition.x);
 
 			other->GetPos().x += iter->second.x * dx;
-
+			p->GetVelocity().x = 0;
 			dynamic_cast<CRigidBody*>(other->GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->SetOnWall(iter->second.x);
 
 			

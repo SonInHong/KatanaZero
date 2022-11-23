@@ -27,9 +27,11 @@ public:
     int& GetRoll() { return m_Roll; }
     int& GetFlip() { return m_Flip; }
     bool& GetAttack() { return m_Attack; }
+    bool& GetWalk() { return m_Walk; }
+    bool& GetRun() { return m_Run; }
+
     double& GetAttackAngle() { return m_AttackAngle; }
-
-
+    
     void SetJump(bool b) { m_Jump = b; }
     void SetOnGround(bool b) { m_OnGround = b || m_OnGround; }
     void SetOnStair(int b) { m_OnStair += b; }
@@ -45,6 +47,7 @@ private:
     double m_Mass;
     double m_MaxSpeed;
     double m_MaxXspeed;
+    double m_MaxXWalkspeed;
     double m_Friction;
     
     doublepoint m_PrevPos;
@@ -62,8 +65,10 @@ private:
     int m_Roll;
     int m_Flip;
     bool m_Attack;
-    double m_AttackAngle;
+    bool m_Walk;
+    bool m_Run;
 
+    double m_AttackAngle;
     double m_StopFricCff;
     double m_MoveFricCff;
     double m_DragCoff;

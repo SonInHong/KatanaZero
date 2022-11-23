@@ -47,6 +47,8 @@ void CPlayer::GetInput()
 	doublepoint& force = dynamic_cast<CRigidBody*>(m_Component[(UINT)COMPONENT_TYPE::RIGIDBODY][0])->GetForce();
 
 	bool& OnGround = dynamic_cast<CRigidBody*>(GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->GetOnGround();
+	bool& Run = dynamic_cast<CRigidBody*>(GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->GetRun();
+	bool& Walk = dynamic_cast<CRigidBody*>(GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->GetWalk();
 	int& OnStair = dynamic_cast<CRigidBody*>(GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->GetOnStair();
 	int& OnWall = dynamic_cast<CRigidBody*>(GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->GetOnWall();
 	int& WallGrab = dynamic_cast<CRigidBody*>(GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->GetWallGrab();
@@ -54,6 +56,10 @@ void CPlayer::GetInput()
 	int& Flip = dynamic_cast<CRigidBody*>(GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->GetFlip();
 	bool& AttackOnOff = dynamic_cast<CRigidBody*>(GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->GetAttack();
 	double& AttackAngle = dynamic_cast<CRigidBody*>(GetComponent(COMPONENT_TYPE::RIGIDBODY)[0])->GetAttackAngle();
+
+	Run = false;
+	Walk = false;
+
 
 	if (OnGround)
 		OnStair = 0;
@@ -149,7 +155,7 @@ void CPlayer::GetInput()
 				&& Animator0->GetCurAnimation()->GetName() != L"AttackRight")
 			{
 				force.x = -100000;
-				
+				Run = true;
 
 				//m_Velocity.y = -m_OnStair * m_Velocity.x
 			}
@@ -169,7 +175,7 @@ void CPlayer::GetInput()
 					if (Animator0->GetCurAnimation()->GetName() == L"RunLeft")
 					{
 						force.x -= 250000;
-						
+						Run = true;
 					}
 						
 				}
@@ -228,7 +234,7 @@ void CPlayer::GetInput()
 				&& Animator0->GetCurAnimation()->GetName() != L"AttackRight")
 			{
 				force.x = 100000;
-				
+				Run = true;
 			}
 				
 
@@ -246,7 +252,7 @@ void CPlayer::GetInput()
 					if (Animator0->GetCurAnimation()->GetName() == L"RunRight")
 					{
 						force.x += 250000;
-						
+						Run = true;
 					}
 						
 				}
@@ -660,7 +666,9 @@ TimeMgr::Create()->EndStopWatch();
 	doublepoint playerpos = {};
 	double min = 100000;
 
-	playerpos.y = ((CCollider*)m_Component[(UINT)COMPONENT_TYPE::COLLIDER][0])->GetAbsPos().y + ((CCollider*)m_Component[(UINT)COMPONENT_TYPE::COLLIDER][0])->GetScale().y / 2;
+	playerpos.y = ((CCollider*)m_Component[(UINT)COMPONENT_TYPE::COLLIDER][0])->GetAbsPos().y 
+		+ ((CCollider*)m_Component[(UINT)COMPONENT_TYPE::COLLIDER][0])->GetScale().y / 2 - 10; // 10만큼 보정
+
 	playerpos.x = ((CCollider*)m_Component[(UINT)COMPONENT_TYPE::COLLIDER][0])->GetAbsPos().x;
 
 	
@@ -892,6 +900,8 @@ void CPlayer::Render(HDC _dc)
 	doublepoint CameraScale = CCameraMgr::Create()->CameraScale(Scale);
 
 	CObject::Render(_dc);
+
+	
 }
 
 void CPlayer::SlashSword(double _Angle)
